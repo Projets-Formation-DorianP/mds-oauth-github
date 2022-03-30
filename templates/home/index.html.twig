@@ -1,21 +1,24 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}TP OAuth - Page d'accueil{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'D:/wamp/www/mds-oauth-google/src/Controller/HomeController.php'|file_link(0) }}">src/Controller/HomeController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'D:/wamp/www/mds-oauth-google/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li>
-    </ul>
-    <a href="/logout">Log out</a>
+<div class="container">
+    <div class="pb-3">
+        {% if app.user %}
+            <h1><strong>Bienvenue <strong>{{app.user.firstname}} {{app.user.lastname}}</strong> !</strong></h1>
+        {% else %}
+            <h1>Vous n'êtes pas connecté.</h1>
+        {% endif %}
+    </div>
+    <div>
+        {% if app.user %}
+            <a role="button" class="btn btn-secondary" href="/logout">Se déconnecter</a>
+        {% else %}
+            <a role="button" class="btn btn-primary" href="/register">S'inscrire</a>
+            <a role="button" class="btn btn-secondary" href="/login">Se connecter</a>
+        {% endif %}
+    </div>
 </div>
 {% endblock %}

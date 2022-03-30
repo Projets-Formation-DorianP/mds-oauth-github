@@ -1,17 +1,24 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}TP OAuth - Inscription{% endblock %}
 
 {% block body %}
-    <h1>Register</h1>
+    <div class="container">
+        <div class="py-5">
+            <h2><strong>Inscription</strong></h2>
+            <hr>
+        </div>
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+        {{ form_start(registrationForm) }}
+            {{ form_row(registrationForm.email) }}
+            {{ form_row(registrationForm.plainPassword, {
+                label: 'Password'
+            }) }}
+            {{ form_row(registrationForm.agreeTerms) }}
 
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">S'inscrire</button>
+            </div>
+        {{ form_end(registrationForm) }}
+    </div>
 {% endblock %}
