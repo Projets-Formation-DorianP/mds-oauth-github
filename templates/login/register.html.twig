@@ -4,20 +4,21 @@
 
 {% block body %}
     <div class="container">
-        <div class="py-5">
-            <h2><strong>Inscription</strong></h2>
+        <div class="pb-3">
+            <h2>Inscription</h2>
             <hr>
         </div>
-
         {{ form_start(registrationForm) }}
             {{ form_row(registrationForm.email) }}
             {{ form_row(registrationForm.plainPassword, {
-                label: 'Password'
+                label: 'Mot de passe :'
             }) }}
-            {{ form_row(registrationForm.agreeTerms) }}
+            {{ form_row(registrationForm.agreeTerms, {
+                label: 'Conditions d\'utilisation'
+            }) }}
 
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary">S'inscrire</button>
+            <div class="btn-group">
+                <button type="submit" class="btn btn-primary">Inscription</button>
             </div>
         {{ form_end(registrationForm) }}
     </div>

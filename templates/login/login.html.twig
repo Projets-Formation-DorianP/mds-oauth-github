@@ -5,30 +5,43 @@
 {% block body %}
     <div class="container">
         <div class="pb-3">
-            <h2><strong>Connexion</strong></h2>
+            <h2>Connexion</h2>
             <hr>
         </div>
-        <form action="{{ path('login') }}" method="POST">
-            {% if error %}
-                <p>{{ error.messageKey|trans(error.messageData, 'security') }}</p>
-            {% endif %}
-            <div class="form-group">
-                <label for="username">Email :</label>
-                <input type="email" class="form-control" id="username" name="_username" placeholder="john.doe@exemple.com" value="{{ last_username }}"/>
-            </div>
+        <div class="col-12 col-md-8">
+            <form action="{{ path('login') }}" method="POST">
+                {% if error %}
+                    <p class="text-danger pb-2">{{ error.messageKey|trans(error.messageData, 'security') }}</p>
+                {% endif %}
+                <div class="form-group">
+                    <label for="username">Email :</label>
+                    <input type="email" class="form-control" id="username" name="_username" placeholder="john.doe@exemple.com" value="{{ last_username }}" />
+                </div>
 
-            <div class="form-group">
-                <label for="password">Mot de passe :</label>
-                <input type="password" class="form-control" id="password" name="_password" />
-            </div>
+                <div class="form-group">
+                    <label for="password">Mot de passe :</label>
+                    <input type="password" class="form-control" id="password" name="_password" />
+                </div>
 
-            {# If you want to control the URL the user is redirected to on success
-            <input type="hidden" name="_target_path" value="/account"/> #}
+                {# If you want to control the URL the user is redirected to on success
+                <input type="hidden" name="_target_path" value="/account"/> #}
 
-            <div class="form-group">
-                <a role="button" class="btn btn-danger" href="/connect/google">Se connecter avec Google</a>
-                <button type="submit" class="btn btn-primary">Connexion</button>
-            </div>
-        </form>
+                <div class="pt-3">
+                    <div class="btn-group">
+                        <button type="submit" class="btn btn-primary">Connexion</button>
+                    </div>
+                    <div class="btn-group">
+                        <a role="button" class="btn btn-danger" href="/connect/google">
+                            <i class="fa-brands fa-google"></i>&nbsp;
+                            Se connecter avec <strong>Google</strong>
+                        </a>
+                        <a role="button" class="btn btn-secondary" href="/connect/github">
+                            <i class="fa-brands fa-github"></i>&nbsp;
+                            Se connecter avec <strong>GitHub</strong>
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 {% endblock %}

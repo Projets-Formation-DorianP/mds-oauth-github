@@ -38,7 +38,7 @@ class GoogleController extends AbstractController
         if (!$this->getUser()) {
           return new JsonResponse([
             'status'  => false,
-            'message' => "User not found.",
+            'message' => "Utilisateur introuvable.",
           ]);
         }
         else {

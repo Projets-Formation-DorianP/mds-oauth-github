@@ -7,17 +7,28 @@
 <div class="container">
     <div class="pb-3">
         {% if app.user %}
-            <h1><strong>Bienvenue <strong>{{app.user.firstname}} {{app.user.lastname}}</strong> !</strong></h1>
+            <h1>Bonjour <strong>{{app.user.firstname}} {{app.user.lastname}}</strong> !</strong></h1>
+            <p class="lead">Vous êtes connecté. Par conséquent, vous avez accès à l'ensemble du site.</p>
         {% else %}
-            <h1>Vous n'êtes pas connecté.</h1>
+            <h1>Bienvenue !</h1>
+            <p class="lead">Veuillez vous authentifier pour continuer à naviguer sur le site.</p>
         {% endif %}
     </div>
-    <div>
+    <div class="btn-group">
         {% if app.user %}
-            <a role="button" class="btn btn-secondary" href="/logout">Se déconnecter</a>
+            <a role="button" class="btn btn-secondary" href="/logout">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>&nbsp;
+                Se déconnecter
+            </a>
         {% else %}
-            <a role="button" class="btn btn-primary" href="/register">S'inscrire</a>
-            <a role="button" class="btn btn-secondary" href="/login">Se connecter</a>
+            <a role="button" class="btn btn-primary" href="/register">
+                <i class="fa-solid fa-pencil"></i>&nbsp;
+                S'inscrire
+            </a>&nbsp;
+            <a role="button" class="btn btn-secondary" href="/login">
+                <i class="fa-solid fa-arrow-right-to-bracket"></i>&nbsp;
+                Se connecter
+            </a>
         {% endif %}
     </div>
 </div>
