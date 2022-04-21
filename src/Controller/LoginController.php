@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use DateTime;
 use App\Entity\User;
+use App\Entity\UserLog;
 use App\Form\RegistrationFormType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,8 +19,18 @@ class LoginController extends AbstractController
     /**
      * @Route("/login", name="login")
      */
-    public function login(AuthenticationUtils $authenticationUtils): Response
+    public function login(Request $request, AuthenticationUtils $authenticationUtils, EntityManagerInterface $entityManager): Response
     {
+        if ($this->isGranted('ROLE_USER') == true) {
+            // User Logger
+            $userLog = new UserLog();
+            $userLog->setAction($request->attributes->get('_route'));
+            $userLog->setDate(new DateTime());
+            $userLog->setUser($this->getUser());
+            $entityManager->persist($userLog);
+            $entityManager->flush();
+        }
+
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
 
@@ -46,6 +58,17 @@ class LoginController extends AbstractController
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
     {
         $user = new User();
+
+        if ($this->isGranted('ROLE_USER') == true) {
+            // User Logger
+            $userLog = new UserLog();
+            $userLog->setAction($request->attributes->get('_route'));
+            $userLog->setDate(new DateTime());
+            $userLog->setUser($this->getUser());
+            $entityManager->persist($userLog);
+            $entityManager->flush();
+        }
+
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 

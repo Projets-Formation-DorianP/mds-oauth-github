@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TP OAuth - Mon activité{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="pb-4">
+        <h2>Mon activité</h2>
+    </div>
+    <div class="content">
+        {% if logs is not null or logs is not empty %}
+            <div style="max-height:500px;overflow:auto;">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Action</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for log in logs %}
+                            <tr>
+                                <td>{{ log.action }}</td>
+                                <td>{{ log.date|date('l j F Y H:i:s') }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            <div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

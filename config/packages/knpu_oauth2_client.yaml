@@ -10,11 +10,11 @@ knpu_oauth2_client:
             redirect_route: connect_google_check
             redirect_params: {}
         github_main:
-                # must be "github" - it activates that type!
-                type: github
-                # add and configure client_id and client_secret in parameters.yml
-                client_id: '%env(OAUTH_GITHUB_ID)%'
-                client_secret: '%env(OAUTH_GITHUB_SECRET)%'
-                # the route that you're redirected to after
-                redirect_route: connect_github_check
-                redirect_params: {}
+            # must be "github" - it activates that type!
+            type: github
+            # add and configure client_id and client_secret in parameters.yml
+            client_id: '%env(OAUTH_GITHUB_ID)%'
+            client_secret: '%env(OAUTH_GITHUB_SECRET)%'
+            # the route that you're redirected to after
+            redirect_route: connect_github_check
+            redirect_params: {}

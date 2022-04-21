@@ -20,7 +20,7 @@
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-light shadow-sm mb-5 bg-dark">
-            <a class="navbar-brand" href="/">
+            <a class="navbar-brand pr-3" href="/">
                 <i class="fa-solid fa-laptop-code"></i>&nbsp;
                 TP OAuth
             </a>
@@ -30,17 +30,31 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 {% if logged %}
                     <ul class="navbar-nav">
-                        <li class="nav-item">
+                        <!--
+                        <li class="nav-item {%if app.request.pathinfo == '/page1' %}active{% endif %}">
                             <a class="nav-link" href="/page1">Page 1</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item {%if app.request.pathinfo == '/page2' %}active{% endif %}">
                             <a class="nav-link" href="/page2">Page 2</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item {%if app.request.pathinfo == '/page3' %}active{% endif %}">
                             <a class="nav-link" href="/page3">Page 3</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item {%if app.request.pathinfo == '/page4' %}active{% endif %}">
                             <a class="nav-link" href="/page4">Page 4</a>
+                        </li>
+                        -->
+                        <li class="nav-item {%if app.request.pathinfo == '/detail' %}active{% endif %}">
+                            <a class="nav-link" href="/detail">
+                                <i class="fa-solid fa-user"></i>&nbsp;
+                                Mes informations
+                            </a>
+                        </li>
+                        <li class="nav-item {%if app.request.pathinfo == '/activity' %}active{% endif %}">
+                            <a class="nav-link" href="/activity">
+                                <i class="fa-solid fa-clock-rotate-left"></i>&nbsp;
+                                Mon activité
+                            </a>
                         </li>
                         <li class="nav-item d-lg-none">
                             <a class="nav-link text-danger" href="/logout">
@@ -60,6 +74,21 @@
                             alt="">
                         </a>
                     </div>
+                {% else %}
+                    <ul class="navbar-nav">
+                        <li class="nav-item d-lg-none">
+                            <a class="nav-link" href="/register">
+                                <i class="fa-solid fa-pencil"></i>&nbsp;
+                                S'inscrire
+                            </a>
+                        </li>
+                        <li class="nav-item d-lg-none">
+                            <a class="nav-link text-success" href="/login">
+                                <i class="fa-solid fa-arrow-right-to-bracket"></i>&nbsp;
+                                Se connecter
+                            </a>
+                        </li>
+                    </ul>
                 {% endif %}
             </div>
         </nav>
