@@ -7,14 +7,30 @@
 <div class="container">
     <div class="pb-3">
         {% if app.user %}
-            <h1>Bonjour <strong>{{app.user.firstname}} {{app.user.lastname}}</strong> !</strong></h1>
-            <p class="lead">Vous êtes connecté. Par conséquent, vous avez accès à l'ensemble du site.</p>
+            <h2>Bonjour <strong>{{app.user.firstname}} {{app.user.lastname}}</strong> !</strong></h2>
+            <p class="lead">Vous n'avez aucun nouveau message.</p>
         {% else %}
             <h1>Bienvenue !</h1>
             <p class="lead">Veuillez vous authentifier pour continuer à naviguer sur le site.</p>
         {% endif %}
     </div>
-    <div class="btn-group">
+    {% if logged %}
+        <div class="content py-4">
+            <table class="table text-secondary">
+                <tbody>
+                    <tr>
+                        <th>Authentification</th>
+                        <td>{{ auth_type }}</td>
+                    </tr>
+                    <tr>
+                        <th>Token</th>
+                        <td>{{ token }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    {% endif %}
+    <div class="btn-group pt-3">
         {% if app.user %}
             <a role="button" class="btn btn-secondary" href="/logout">
                 <i class="fa-solid fa-arrow-right-from-bracket"></i>&nbsp;
