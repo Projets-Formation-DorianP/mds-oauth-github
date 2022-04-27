@@ -45,7 +45,7 @@
                 <tbody>
                     <tr>
                         <th>ID</th>
-                        {% if app.user.googleId is null %}
+                        {% if app.user.googleId is defined and app.user.googleId is null %}
                             <td>{{ app.user.id }}</td>
                         {% else %}
                             <td>{{ app.user.googleId }}</td>
@@ -53,7 +53,7 @@
                     </tr>
                     <tr>
                         <th>Client</th>
-                        {% if app.user.googleId is null %}
+                        {% if app.user.googleId is defined and app.user.googleId is null %}
                             <td>Symfony</td>
                         {% else %}
                             <td>Google</td>
