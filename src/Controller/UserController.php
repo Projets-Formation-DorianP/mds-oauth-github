@@ -32,18 +32,13 @@ class UserController extends AbstractController
         }
 
         $token = $security->getToken();
-        $authType = substr($token, 0, 28) === 'PostAuthenticationGuardToken'
-            ? 'Google'
-            : 'Symfony'
-        ;
 
         if ($this->isGranted('ROLE_USER') == false) {
             return $this->redirectToRoute('home');
         }
         return $this->render('user/detail.html.twig', [
             'controller_name'   => 'UserController',
-            'token'             => $token,
-            'auth_type'         => $authType
+            'token'             => $token
         ]);
     }
 
