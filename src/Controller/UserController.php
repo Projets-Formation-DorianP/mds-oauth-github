@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use DateTime;
-use App\Entity\User;
 use App\Entity\UserLog;
 use App\Repository\UserLogRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -11,6 +10,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class UserController extends AbstractController
@@ -18,10 +19,8 @@ class UserController extends AbstractController
     /**
      * @Route("/detail", name="detail")
      */
-    public function detail(Request $request, Security $security, UserLogRepository $userLogRepo, EntityManagerInterface $entityManager): Response
+    public function detail(Request $request, SessionInterface $session, Security $security, EntityManagerInterface $entityManager): Response
     {
-        $user = $this->getUser();
-
         if ($this->isGranted('ROLE_USER') == true) {
             // User Logger
             $userLog = new UserLog();

@@ -4,12 +4,12 @@
 
 {% block body %}
 <div class="container">
-    <div class="pb-4">
-        <h2>Mon activité</h2>
+    <div class="pb-5">
+        <h2><strong>Mon activité</strong></h2>
     </div>
     <div class="content">
         {% if logs is not null or logs is not empty %}
-            <div style="max-height:500px;overflow:auto;">
+            <div class="mb-4" style="max-height:500px;overflow:auto;">
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -26,7 +26,17 @@
                         {% endfor %}
                     </tbody>
                 </table>
+            </div>
+            <div class="btn-group float-right">
+                <a role="button" class="btn btn-danger" href="/activity/reset">
+                    <i class="fa-solid fa-trash"></i>&nbsp;
+                    Réinitialiser
+                </a>
+            </div>
+        {% else %}
             <div>
+                <p>Aucune activité récente.</p>
+            </div>
         {% endif %}
     </div>
 </div>

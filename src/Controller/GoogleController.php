@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
-use League\OAuth2\Client\Provider\Exception\IdentityProviderException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,7 +22,7 @@ class GoogleController extends AbstractController
         // will redirect to Google!
         return $clientRegistry
             ->getClient('google_main') // key used in config/packages/knpu_oauth2_client.yaml
-            ->redirect();
+            ->redirect([], ['prompt' => 'select_account']);
     }
 
     /**

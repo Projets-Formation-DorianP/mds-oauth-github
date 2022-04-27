@@ -4,15 +4,47 @@
 
 {% block body %}
 <div class="container">
-    <div class="pb-4">
-        <h2>Mes informations</h2>
+    <div class="pb-5">
+        <h2><strong>Mes informations</strong></h2>
     </div>
     <div class="content">
-        <div style="max-height:500px;overflow:auto;">
+        <div class="pb-4">
+            <h4>
+                <i class="fa-solid fa-chevron-right"></i>&nbsp;
+                Général
+            </h4>
+        </div>
+        <div class="pb-4">
             <table class="table">
                 <tbody>
                     <tr>
-                        <th>Authentification</th>
+                        <th>Prénom</th>
+                        <td>{{ app.user.firstname }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nom</th>
+                        <td>{{ app.user.lastname }}</td>
+                    </tr>
+                    <tr>
+                        <th>Avatar</th>
+                        <td>
+                            <a href="{{ app.user.avatar }}">{{ app.user.avatar }}</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="pb-4">
+            <h4>
+                <i class="fa-solid fa-chevron-right"></i>&nbsp;
+                Authentification
+            </h4>
+        </div>
+        <div class="pb-4">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th>Client</th>
                         <td>{{ auth_type }}</td>
                     </tr>
                     <tr>
@@ -21,7 +53,7 @@
                     </tr>
                 </tbody>
             </table>
-        <div>
+        </div>
     </div>
 </div>
 {% endblock %}

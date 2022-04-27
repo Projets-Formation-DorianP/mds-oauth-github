@@ -42,8 +42,7 @@ class GoogleAuthenticator extends SocialAuthenticator
     public function getUser($credentials, UserProviderInterface $userProvider)
     {
         /** @var GoogleUser $googleUser */
-        $googleUser = $this->getGoogleClient()
-            ->fetchUserFromToken($credentials);
+        $googleUser = $this->getGoogleClient()->fetchUserFromToken($credentials);
 
         $email = $googleUser->getEmail();
 

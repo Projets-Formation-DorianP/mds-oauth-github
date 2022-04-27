@@ -21,7 +21,6 @@
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-light shadow-sm mb-5 bg-dark">
             <a class="navbar-brand pr-3" href="/">
-                <i class="fa-solid fa-laptop-code"></i>&nbsp;
                 TP OAuth
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -65,7 +64,7 @@
                     </ul>
                     <div class="navbar-avatar d-none d-lg-block" style="margin-left:auto;">
                         <a href="/logout" data-toggle="tooltip" data-placement="bottom" title="{{ app.user.firstname }} {{ app.user.lastname }}">
-                            <img class="rounded-circle" height="38" width="38"
+                            <img referrerpolicy="no-referrer" class="rounded-circle" height="38" width="38"
                                 {% if app.user.avatar is defined and app.user.avatar is not null %}
                                     src="{{ app.user.avatar }}"
                                 {% else %}
