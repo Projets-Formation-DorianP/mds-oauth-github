@@ -31,10 +31,14 @@ security:
             # configure the form authentication as the entry point for unauthenticated users
             entry_point: form_login
 
-            guard:
-                authenticators:
-                    - App\Security\GoogleAuthenticator
-                    # - App\Security\GitHubAuthenticator
+            custom_authenticators:
+                - App\Security\NewGoogleAuthenticator
+
+            # old authentication method
+            # guard:
+            #     authenticators:
+            #         - App\Security\GoogleAuthenticator
+            #         # - App\Security\GitHubAuthenticator
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
