@@ -61,6 +61,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $avatar;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $googleId;
+
+    /**
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $creationDate;
