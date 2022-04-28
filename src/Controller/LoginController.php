@@ -77,9 +77,10 @@ class LoginController extends AbstractController
             $user->setPassword(
             $userPasswordHasher->hashPassword(
                     $user,
-                    $form->get('plainPassword')->getData()
+                    $form->get('password')->getData()
                 )
             );
+            $user->setLastName(mb_strtoupper($user->getLastName(), 'UTF-8'));
 
             $entityManager->persist($user);
             $entityManager->flush();
@@ -89,7 +90,7 @@ class LoginController extends AbstractController
         }
 
         return $this->render('login/register.html.twig', [
-            'registrationForm' => $form->createView(),
+            'form' => $form->createView(),
         ]);
     }
 }

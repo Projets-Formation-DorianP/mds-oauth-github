@@ -30,7 +30,7 @@ class PageController extends AbstractController
         if ($this->isGranted('ROLE_USER') == false) {
             return $this->redirectToRoute('home');
         }
-        return $this->render('page/page1.html.twig', [
+        return $this->render('pages/page1.html.twig', [
             'controller_name' => 'PageController',
         ]);
     }
@@ -50,7 +50,7 @@ class PageController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->render('page/page2.html.twig', [
+        return $this->render('pages/page2.html.twig', [
             'controller_name' => 'PageController',
         ]);
     }
@@ -70,7 +70,7 @@ class PageController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->render('page/page3.html.twig', [
+        return $this->render('pages/page3.html.twig', [
             'controller_name' => 'PageController',
         ]);
     }
@@ -90,7 +90,7 @@ class PageController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->render('page/page4.html.twig', [
+        return $this->render('pages/page4.html.twig', [
             'controller_name' => 'PageController',
         ]);
     }

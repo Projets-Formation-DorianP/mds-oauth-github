@@ -50,7 +50,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Assert\NotBlank(message="Veuillez renseigner votre prénom.")
+     * @Assert\NotBlank(message="Veuillez renseigner votre nom.")
      */
     private $lastName;
 
