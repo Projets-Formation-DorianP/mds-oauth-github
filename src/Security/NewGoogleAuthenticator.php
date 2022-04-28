@@ -62,7 +62,7 @@ class NewGoogleAuthenticator extends OAuth2Authenticator
 
                 // 3) Maybe you just want to "register" them by creating
                 // a User object
-                $user->setGoogleId($googleUser->getId());
+                $user->setGoogleId($googleUser->getId() ?? 'NULL');
                 $user->setEmail($email);
                 $user->setPassword($this->encoder->hashPassword($user, "password"));
                 $user->setFirstName($googleUser->getFirstName());
