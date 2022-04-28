@@ -60,17 +60,21 @@ class NewGoogleAuthenticator extends OAuth2Authenticator
                 // 2) do we have a matching user by email?
                 $user = $this->entityManager->getRepository(User::class)->findOneBy(['email' => $email]);
 
-                // 3) Maybe you just want to "register" them by creating
-                // a User object
-                $user->setGoogleId($googleUser->getId() ?? 'NULL');
-                $user->setEmail($email);
-                $user->setPassword($this->encoder->hashPassword($user, "password"));
-                $user->setFirstName($googleUser->getFirstName());
-                $user->setLastName($googleUser->getLastName());
-                $user->setAvatar($googleUser->getAvatar());
-                $user->setCreationDate(new \DateTime(date('Y-m-d H:i:s')));
-                $this->entityManager->persist($user);
-                $this->entityManager->flush();
+                if (!$user) {
+
+                    // 3) Maybe you just want to "register" them by creating
+                    // a User object
+                    $user = new User();
+                    $user->setGoogleId($googleUser->getId());
+                    $user->setEmail($email);
+                    $user->setPassword($this->encoder->hashPassword($user, "password"));
+                    $user->setFirstName($googleUser->getFirstName());
+                    $user->setLastName($googleUser->getLastName());
+                    $user->setAvatar($googleUser->getAvatar());
+                    $user->setCreationDate(new \DateTime(date('Y-m-d H:i:s')));
+                    $this->entityManager->persist($user);
+                    $this->entityManager->flush();
+                }
 
                 return $user;
             })
